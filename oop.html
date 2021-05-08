@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>00 3D Object Design</title>
+    <meta charset="UTF-8">
+    <meta name="Amherstia S. Doctor" content="asdoctor@up.edu.ph">
+    <meta name="description" content="a template for webgl applications in CMSC161">
+
+    <!-- load all scripts needed for content creation -->
+
+      <!-- shader programs -->
+    <script id="vertex-shader" type="notjs">#version 300 es
+      uniform mat4 u_model;
+      uniform mat4 u_view;
+      uniform mat4 u_proj;
+      in vec3 a_position;
+
+      void main() {
+        gl_Position = u_proj * u_view * u_model * vec4(a_position, 1.0);
+        gl_PointSize = 10.0;
+      }
+
+    </script>
+
+    <script id="fragment-shader" type="notjs">#version 300 es
+      precision mediump float;
+      uniform vec3 u_color;
+      out vec4 out_color;
+
+      void main() {
+        out_color = vec4(u_color, 1.0);
+      }
+
+    </script>
+
+    <!-- WebGL SETUP LIBRARIES -->
+    <script src="./utils/gl-matrix.js"></script>
+    <script src="./utils/webgl-debug.js"></script>
+    <script src="./utils/webgl-utils.js"></script>
+    <script src="./utils/webgl-init.js"></script>
+    <script src="./utils/html-init.js"></script>
+    <script src="./Geometry.js"></script>
+    <script src="./Cube.js"></script>
+    <script src="./Camera.js"></script>    
+    <script src="./Scene.js"></script>
+    <script src="./main.js"></script>
+
+  </head>
+  
+  <body>
+    <canvas id="master" width="512" height="512"></canvas>
+  </body>
+</html>
